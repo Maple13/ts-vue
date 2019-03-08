@@ -6,8 +6,33 @@ node_js:
 # Travis-CI Caching
 cache:
   directories:
-    - node_modules
+    - node_modules    # 缓存 node_js 依赖，提升第二次构建的效率
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+before_script:
+
+# 无其他依赖项所以执行npm run build 构建就行了
+script:
+  - npm run build
+
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "${U_NAME}"
+  - git config user.email "${U_EMAIL}"
+  - git add .
+  - git commit -m "Update tools"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
+# E: Build LifeCycle
 
 branchs:
   only:
   - master  #指定只有检测到master分支有变动时才执行任务
+
+env:
+  global:
+  # 我将其添加到了travis-ci的环境变量中
+  #- GH_REF: github.com/maple13/ts-vue.git

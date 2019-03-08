@@ -3,7 +3,7 @@
     <div>
       <Button type="primary">按钮</Button>
     </div>
-    <HelloWorld msg="你好 travis, 你捕捉到我了吗？再次" />
+    <HelloWorld msg="你好 travis" />
   </div>
 </template>
 

@@ -2,7 +2,7 @@
   <div id="app">
     <div>
       <Button type="primary">按钮</Button>
-      <p>年后</p>
+      <p>年后更新文字</p>
     </div>
     <HelloWorld msg="你好 travis" />
   </div>
